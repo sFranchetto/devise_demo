@@ -1,0 +1,27 @@
+<h1>Welcome!</h1>
+
+<% if current_user %>
+<h3> You are signed in as: <%= current_user.email %> </h3>
+<% if current_user.admin %>
+<h3> You are logged in as an admin </h3>
+<% else %>
+<h3> You are not logged in as an admin </h3>
+<% end %>
+<% else %>
+<h3> You are not currently signed in </h3>
+<% end %>
+
+<% if current_user %>
+<br/>
+
+<%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+
+<% else %>
+<%= link_to 'Sign up', new_user_registration_path %>
+
+<br/>
+<%= link_to 'Sign in', new_user_session_path %>
+<% end %>
+
+<br/>
+<%= link_to 'Songs', songs_path %>
